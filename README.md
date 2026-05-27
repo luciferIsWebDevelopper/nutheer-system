@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Nutheer System
 
 Enterprise IT services, professional training, and an AI-ready learning platform built with **Next.js 16**, **TypeScript**, **Supabase**, and **Vercel**.
@@ -104,3 +105,7 @@ src/
 ## License
 
 Private — Nutheer System.
+=======
+# nutheer-system
+This is my company repository
+>>>>>>> 4af12243aff801f2aa8f791ddae7e3fd74d0bec6
