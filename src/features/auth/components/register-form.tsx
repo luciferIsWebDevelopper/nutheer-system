@@ -21,6 +21,9 @@ export function RegisterForm() {
     state.error &&
     ("form" in state.error ? state.error.form?.[0] : undefined);
 
+  const successMessage =
+    state && state.success && "message" in state ? state.message : null;
+
   return (
     <Card className="w-full max-w-md border-border/60">
       <CardHeader>
@@ -32,6 +35,11 @@ export function RegisterForm() {
           {formError && (
             <p className="text-sm text-destructive" role="alert">
               {formError}
+            </p>
+          )}
+          {successMessage && (
+            <p className="text-sm text-primary bg-primary/10 rounded-md p-3" role="status">
+              {successMessage}
             </p>
           )}
           <div className="space-y-2">

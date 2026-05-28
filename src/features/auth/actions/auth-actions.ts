@@ -61,7 +61,7 @@ export async function registerAction(formData: FormData) {
     return { success: false as const, error: { form: ["Database unavailable"] } };
   }
 
-  const { error } = await supabase.auth.signUp({
+  const { data, error } = await supabase.auth.signUp({
     email: parsed.data.email,
     password: parsed.data.password,
     options: {
@@ -71,6 +71,14 @@ export async function registerAction(formData: FormData) {
 
   if (error) {
     return { success: false as const, error: { form: [error.message] } };
+  }
+
+  // If email confirmation is required, user won't have a session yet
+  if (!data.session) {
+    return {
+      success: true as const,
+      message: "Account created! Check your email to confirm your address, then sign in.",
+    };
   }
 
   redirect(routes.dashboard.root);
